@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Mode Reference</title>
+    <style>
+        :root {
+            --text-color: #ff5d85; /* Define the text color variable */
+            --background-color: pink; /* Define the background color variable */
+            --box-background-color: #ffcccb;
+            --border: #ff8080;
+            --title: #ff2d55;
+            --textbox: white;
+            --typing-text-color: #ff8080;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: var(--background-color); /* Set the background color to pink */
+            background-repeat: repeat;
+        }
+
+        .header {
+            display: flex;
+            flex: 1;
+        }
+
+        .box {
+            color: var(--text-color);
+            flex: 1;
+            background-color: var(--box-background-color); /* Set the box background color to light pink */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .box::before {
+            font-size: 24px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .big-box {
+            flex: 2;
+            margin:20px;
+            background-color: var(--box-background-color); /* A cute pastel pink */
+            border: 1px solid var(--border); /* Lighter pink border */
+            padding: 20px;
+            text-align: left; /* Left-align the text for a cute look */
+            position: relative;
+            border-radius: 10px; /* Rounded corners for cuteness */
+            box-shadow: 0px 0px 10px 0px var(--border); /* A subtle shadow */
+        }
+
+        .big-box h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--title); /* A cute shade of pink */
+            margin-bottom: 20px; /* Add some spacing below the title */
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .grid-item {
+            color: var(--text-color);
+            background-color: var(--box-background-color); /* A cute pastel pink */
+            border: 1px solid var(--border); /* Lighter pink border */
+            padding: 20px;
+            text-align: left;
+            font-size: 24px;
+            border-radius: 10px; /* Rounded corners for cuteness */
+            box-shadow: 0px 0px 5px 0px var(--border); /* A subtle shadow */
+        }
+
+        .typing-box {
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            margin: 20px;
+        }
+
+        .typing-box textarea {
+            width: 100%; /* Make the textarea fill the width of its container */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
+
+        .rules-box {
+            color: var(--text-color);
+            flex: 1;
+            background-color: var(--box-background-color); /* A cute pastel pink */
+            border: 1px solid var(--border); /* Lighter pink border */
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            margin: 20px;
+            border-radius: 10px; /* Rounded corners for cuteness */
+            box-shadow: 0px 0px 10px 0px var(--border); /* A subtle shadow */
+        }
+
+        .rules-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--title); /* Use title color variable */
+            margin-bottom: 10px; /* Add some spacing below the title */
+            flex: 1; /* Allow the heading to grow and take available space */
+        }
+
+        .rule-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .rule-list li {
+            margin-bottom: 10px;
+        }
+
+        .signs-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .signs-list li {
+            margin-bottom: 10px;
+        }
+
+        .rule-bullet::before {
+            content: '🌟';
+            margin-right: 5px;
+        }
+
+        .sign-bullet::before {
+            content: '🌟'; 
+            margin-right: 
+        }
+
+        .typing-box-cute {
+            background-color: var(--box-background-color); /* A cute pastel pink */
+            border: 1px solid var(--border); /* Lighter pink border */
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            margin: 20px;
+            border-radius: 10px; /* Rounded corners for cuteness */
+            box-shadow: 0px 0px 10px 0px var(--border); /* A subtle shadow */
+            position: relative;
+        }
+
+        .cute-textarea {
+            width: 100%; /* Make the textarea fill the width of its container */
+            box-sizing: border-box; /* Include padding and border in the width */
+            background-color: var(--textbox); /* White background for the textarea */
+            border: 1px solid var(--border); /* Lighter pink border for the textarea */
+            border-radius: 5px; /* Rounded corners for the textarea */
+            padding: 10px;
+            margin-top: 10px;
+            resize: none; /* Disable textarea resizing */
+            font-size: 16px;
+            color: var(--typing-text-color); /* Cute pink text color for the textarea */
+        }
+
+        .cute-textarea::placeholder {
+            color: var(--border); /* Cute pink placeholder text color */
+        }
+
+        p{
+            color: var(--text-color)
+        }
+
+        #color-change-button {
+            background-color: var(--box-background-color);
+            border: 1px solid var(--border);
+            color: var(--title);
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #text-change-button {
+            background-color: var(--box-background-color);
+            border: 1px solid var(--border);
+            color: var(--title);
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .heading-container {
+            display: flex;
+            align-items: center;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--box-background-color);
+            padding: 20px;
+            border: 1px solid var(--border);
+            z-index: 1;
+            box-shadow: 0px 0px 10px 0px var(--border);
+        }
+
+        .modal-content {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            color: var(--text-color);
+        }
+
+        .close {
+            color: var(--border);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--title);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="rules-box">
+            <h2 class="rules-title">Cat Mode Rules</h2>
+            <ul class="rule-list" id="rules-list">
+                <li class="rule-bullet">Do not the cat. Do not make references to anything sexual</li>
+                <li class="rule-bullet">Kitty is vulnerable, do not hurt it</li>
+                <li class="rule-bullet">No face kisses</li>
+                <li class="rule-bullet">Communication is key. Try to use yes or no questions</li>
+            </ul>
+        </div>
+        <div class="rules-box">
+            <div class="heading-container">
+                <h2 class="rules-title">signs</h2>
+                <button id="color-change-button">Toggle Colors</button>
+                <button id="text-change-button">Custom Text</button>
+            </div>
+            <ul class="signs-list" id="signs-list">
+                <li class="sign-bullet">2 taps is stop</li>
+                <li class="sign-bullet">thumbs up/down encouraged</li>
+                <li class="sign-bullet">nodding encouraged</li>
+                <li class="sign-bullet">have a notebook or app availiable if able. You can also use the text box below</li>
+            </ul>
+        </div>
+    </div>
+    <div class="big-box">
+        <h1>Nonverbal Cues</h1>
+        <p>single number is one hand. two numbers is both hands. Do not worry about which hand is which. there are no duplicates. (ex. 1,2 can be right 1 left 2 or right 2 left 1)</p>
+        <div class="grid">
+            <!-- Add your grid items here -->
+            <!-- Row 1 -->
+            <div class="grid-item" data-key="1">1: Thinking</div>
+            <div class="grid-item" data-key="1,1">1,1: Hot</div>
+            <div class="grid-item" data-key="1,2">1,2: Cold</div>
+            <div class="grid-item" data-key="1,3">1,3: Hungry</div>
+            <div class="grid-item" data-key="1,4">1,4: Thirsty</div>
+            <div class="grid-item" data-key="1,5">1,5: Sleepy</div>
+
+            <!-- Row 2 -->
+            <div class="grid-item" data-key="2">2: Bathroom</div>
+            <div></div>
+            <div class="grid-item" data-key="2,2">2,2: Happy</div>
+            <div class="grid-item" data-key="2,3">2,3: Sad</div>
+            <div class="grid-item" data-key="2,4">2,4: Angry</div>
+            <div class="grid-item" data-key="2,5">2,5: Hurt</div>
+
+            <!-- Row 3 -->
+            <div class="grid-item" data-key="3">3: sorry</div>
+            <div></div>
+            <div></div>
+            <div class="grid-item" data-key="3,3">3,3: Help</div>
+            <div class="grid-item" data-key="3,4">3,4: Play</div>
+            <div class="grid-item" data-key="3,5">3,5: Hug</div>
+
+            <!-- Row 4 -->
+            <div class="grid-item" data-key="4">4: Thank you</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="grid-item" data-key="4,4">4,4: cute</div>
+            <div class="grid-item" data-key="4,5">4,5</div>
+
+            <!-- Row 5 -->
+            <div class="grid-item" data-key="5">5: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="grid-item"  data-key="5,5">5,5</div>
+        </div>
+        <div class="typing-box-cute">
+            <!-- Add your typing box content here -->
+            <textarea rows="4" placeholder="Typies" class="cute-textarea"></textarea>
+        </div>
+    </div>
+
+    <div id="customTextModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Enter Custom Text</h2>
+            <p>example input for the default website:</p>
+            <textarea id="" rows="10" cols="50" style="background-color: var(--textbox); border: 1px solid var(--border); color: var(--text-color); text-align: left; overflow: auto;">
+                {
+    "1": "Thinking",
+    "1,1": "Hot",
+    "1,2": "Cold",
+    "1,3": "Hungry",
+    "1,4": "Thirsty",
+    "1,5": "Sleepy",
+    "2": "Bathroom",
+    "2,2": "Happy",
+    "2,3": "Sad",
+    "2,4": "Angry",
+    "2,5": "Hurt",
+    "3": "sorry",
+    "3,3": "Help",
+    "3,4": "Play",
+    "3,5": "Hug",
+    "4": "Thank you",
+    "4,4": "cute",
+    "4,5": "",
+    "5": "",
+    "5,5": "",
+    "rules": {
+        "rule1": "Do not the cat. Do not make references to anything sexual",
+        "rule2": "Kitty is vulnerable, do not hurt it",
+        "rule3": "No face kisses",
+        "rule4": "Communication is key. Try to use yes or no questions"
+    }
+}
+                                </textarea>
+            <p>Enter your custom JSON file content:</p>
+            <textarea id="jsonInput" rows="10" cols="50" placeholder='{"1": "Custom Text 1", "2": "Custom Text 2", ...}'></textarea>
+            <button onclick="applyCustomText()">Apply Custom Text</button>
+        </div>
+    </div>
+
+    <script>
+        // Track the color state
+        let isPink = true;
+
+        // Function to toggle colors
+        function toggleColors() {
+            if (isPink) {
+                // Change to dark purple colors
+                document.documentElement.style.setProperty('--text-color', '#CAB1E6'); 
+                document.documentElement.style.setProperty('--background-color', '#2C1B3E'); 
+                document.documentElement.style.setProperty('--box-background-color', '#604C77 '); 
+                document.documentElement.style.setProperty('--border', '#B28BDE');
+                document.documentElement.style.setProperty('--title', '#E0CCF7 ');
+                document.documentElement.style.setProperty('--textbox', '#2C1B3E');
+                document.documentElement.style.setProperty('--typing-text-color', '#B28BDE');
+            } else {
+                // Change back to pink colors
+                document.documentElement.style.setProperty('--text-color', '#ff5d85'); 
+                document.documentElement.style.setProperty('--background-color', 'pink'); 
+                document.documentElement.style.setProperty('--box-background-color', '#ffcccb'); 
+                document.documentElement.style.setProperty('--border', '#ff8080');
+                document.documentElement.style.setProperty('--title', '#ff2d55');
+                document.documentElement.style.setProperty('--textbox', 'white');
+                document.documentElement.style.setProperty('--typing-text-color', '#ff8080');
+            }
+
+            // Toggle the color state
+            isPink = !isPink;
+        }
+
+        // Function to open the custom text modal
+        function openPopup() {
+            const modal = document.getElementById('customTextModal');
+            modal.style.display = 'block';
+        }
+
+        // Function to close the custom text modal
+        function closePopup() {
+            const modal = document.getElementById('customTextModal');
+            modal.style.display = 'none';
+        }
+
+        function applyCustomText() {
+    const jsonInput = document.getElementById('jsonInput').value;
+
+    try {
+        const customData = JSON.parse(jsonInput);
+
+        // Update the content of each grid item based on the customText JSON
+        Object.keys(customData).forEach(key => {
+            let element;  // Declare the element variable here
+
+            if (key === 'rules') {
+                element = document.querySelector('.rules-box');
+                if (element) {
+                    const ruleList = element.querySelector('.rule-list');
+                    if (ruleList) {
+                        // Clear existing rules or signs
+                        ruleList.innerHTML = '';
+
+                        // Add new rules or signs
+                        Object.keys(customData[key]).forEach(ruleKey => {
+                            const listItem = document.createElement('li');
+                            listItem.className = 'rule-bullet';
+                            listItem.textContent = `${customData[key][ruleKey]}`;
+                            ruleList.appendChild(listItem);
+                        });
+                    }
+                }
+            } else {
+                // Handle other grid items
+                element = document.querySelector(`.grid-item[data-key="${key}"]`);
+                if (element) {
+                    element.textContent = `${key}: ${customData[key]}`;
+                }
+            }
+        });
+
+        // Close the modal after applying custom text
+        closePopup();
+    } catch (error) {
+        alert('Invalid JSON format. Please enter a valid JSON object.');
+    }
+}
+
+
+        // Add an event listener to the button
+        document.getElementById("text-change-button").addEventListener("click", openPopup)
+        document.getElementById("color-change-button").addEventListener("click", toggleColors);
+    </script>
+</body>
+</html>
