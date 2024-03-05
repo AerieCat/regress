@@ -26,6 +26,7 @@
 
         .header {
             display: flex;
+            flex-wrap: wrap; /* Sapphira: Simply allowing the flex to wrap allows the boxes to go into single column, this isn't perfect but it definitely works :3 */
             flex: 1;
         }
 
@@ -202,6 +203,16 @@
             display: flex;
             align-items: center;
         }
+        @media screen and (max-width: 900px) { /* Sapphira: This is where the grid starts to overflow. */
+            .grid { /* Sapphira: Make the grid single column when display size is below 900px to make grid not messy */
+                grid-template-columns: 1fr;
+            }
+        }
+        @media screen and (min-width: 900px) { /* Sapphira: Sorry, I don't have time to get modal to work rn, so this will be used to show/hide a warning as necessary for now... */
+            .display-mobile-only {
+                display: none;
+            }
+        }
         .modal {
             display: none;
             position: fixed;
@@ -262,6 +273,7 @@
                 <li class="sign-bullet">thumbs up/down encouraged</li>
                 <li class="sign-bullet">nodding encouraged</li>
                 <li class="sign-bullet">have a notebook or app availiable if able. You can also use the text box below</li>
+                <li class="sign-bullet display-mobile-only">note: custom text menu may be hard to use on mobile :(</li> <!--To do: delete this line once custom menu looks correct on mobile-->
             </ul>
         </div>
     </div>
